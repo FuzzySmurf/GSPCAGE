@@ -1,0 +1,795 @@
+[33mcommit c632bcd8ca737070c7d7c83fb9151b98ab72ca0f[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Thu Feb 28 21:02:36 2013 -0600
+
+    Update UI.cpp
+    
+    bugs fixed?
+
+[33mcommit 41387197cb3c3f1df83a5bdf10c32b5f3cacfb54[m
+Author: Mike Gifford <mike@silvermoonfilms.com>
+Date:   Thu Feb 28 21:29:38 2013 -0500
+
+    renamed to stop confusion
+
+[33mcommit 13f6a14bc64fcefbf91203991480afd7d2bcbaea[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Thu Feb 28 20:20:50 2013 -0600
+
+    Update UI.cpp
+
+[33mcommit 12fe2a88a7b88a986f5525049240befdcb0a19db[m
+Author: aSaul2006 <asaul200665@gmail.com>
+Date:   Thu Feb 28 15:58:42 2013 -0800
+
+    Update Resources.xml
+    
+    Added additional asset metadata to xml 
+
+[33mcommit 6204d9f390e3e509e5b3981997d8ac69646c4e01[m
+Author: Mike Gifford <mike@silvermoonfilms.com>
+Date:   Thu Feb 28 18:44:01 2013 -0500
+
+    Added in bar and credits
+
+[33mcommit e9c169a801f2958060c6feefbb32db0966e127c9[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Thu Feb 28 15:26:05 2013 -0600
+
+    Update UI.cpp
+
+[33mcommit 3271f074e22737d984eb4c683aee7ed21ab57280[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Thu Feb 28 15:24:06 2013 -0600
+
+    Update UI.cpp
+    
+    health and status bars + credits
+
+[33mcommit b0667b95e6d0540b3e664194be1d84fc5654bba1[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Thu Feb 28 15:17:28 2013 -0600
+
+    Update UI.cpp
+    
+    added health and stamina bars + credits screen
+
+[33mcommit 55626c59312b386140af9bd21fc75882a751ec08[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Thu Feb 28 12:57:42 2013 -0500
+
+    AI folder excluded
+    
+    The AI folder still exists, I just told the compiler to ignore the AI
+    files for now since those have bugs and still need work, so the rest can
+    actually run. It should run now. I had to install Service Pack 1 for
+    VS2010 to get things to work with the more recent versions.
+
+[33mcommit 77042ff7a14aab29806370cacd7dc0a7bcde2ad8[m
+Author: Bryan Sweeney <bsweeney68@yahoo.com>
+Date:   Thu Feb 28 12:32:17 2013 -0500
+
+    library for physics shold only need one physicsEngine lib in physicsmanager Debug
+
+[33mcommit 02abbc7b0e1777390b70984d5dadbdef31eff541[m
+Author: Bryan Sweeney <bsweeney68@yahoo.com>
+Date:   Thu Feb 28 08:22:22 2013 -0500
+
+    Added Physics Engine to Main folder referenced by main; Added AI files to repository - the ones I had;
+    
+    Physics engine hooked in to both the main folder and the GSPMain-master;
+    AI files added to GSPCAGE Folder - includes corrected - two files I
+    didn't have 1.) MovingEntity.h, 2.) Game.h one called in Projectiles.h
+    the other in Projectiles.cpp; don't have so couldn't add, laft the rest
+    as I found it:)
+
+[33mcommit dd8b92aed345e185a80c77f11325aba9b5397bdf[m
+Author: tdogx <tamarris.jenkins@gmail.com>
+Date:   Wed Feb 27 23:22:46 2013 -1000
+
+    Added AI's code to project(needs work)
+
+[33mcommit bd7a9f2e908c3be419459f2742398b131c0b607d[m
+Author: FuzzySmurf <alexmoreno777@gmail.com>
+Date:   Wed Feb 27 13:25:16 2013 -0800
+
+    .
+
+[33mcommit fb9c957984a375e6a4eb4ac8daf5af08274df786[m
+Author: Bryan Sweeney <bsweeney68@yahoo.com>
+Date:   Wed Feb 27 07:02:16 2013 -0500
+
+    physics
+
+[33mcommit d24f3dc41ab8ae7c35b7f4d269ac81942bf0f6e6[m
+Author: David Low <dlow@dlow-inc.com>
+Date:   Wed Feb 27 01:56:48 2013 -0700
+
+    Separated Scripting Core IDE
+    
+    The IDE is now executable by running Script.exe.  Location is very
+    important because there are several necessary support files.
+
+[33mcommit 1eacb31ec84d5bbbd74d454f7cdb9f9840aeafa9[m
+Author: aSaul2006 <as200665@gmail.com>
+Date:   Tue Feb 26 22:11:56 2013 -0800
+
+    Aaron Saul
+    Add assets and update Resources.xml for Resource Manager
+
+[33mcommit 91e1dac927f2cea65414efe4ca3d45b957061aa5[m
+Author: unknown <aaron.saul@PEND-2370.cayusetechnologies.com>
+Date:   Tue Feb 26 14:29:36 2013 -0800
+
+    Aaron Saul
+    Move audio/resource under main to fix linker errors when resourcemanager tries to access the render stuff.
+
+[33mcommit fbafde8df52bba99dc66bef29e713a315bface9a[m
+Author: unknown <aaron.saul@PEND-2370.cayusetechnologies.com>
+Date:   Tue Feb 26 14:18:43 2013 -0800
+
+    Move audio/resource under main to fix linker errors when resourcemanager tries
+    to access the render stuff.
+
+[33mcommit d4b3aee53317b06f6f8a24109b6e79d698b944d3[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Tue Feb 26 03:11:29 2013 -0500
+
+    fixed main externals and merged render with main
+    
+    Main required almost every file from the render project, so I merged the projects together and separated the files into filters. This will keep the same directory structure while keeping the project organized.
+
+[33mcommit 2876da9b5c0ee83ad7798575dc6aea55eeb3c80f[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Tue Feb 26 00:56:16 2013 -0500
+
+    fixed external symbol error for render core while keeping audio separate
+
+[33mcommit 4eaef8fddee8ef735b0eb956236529c0e66b3e4b[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Mon Feb 25 15:53:25 2013 -0600
+
+    Update UI/StatusBar.cpp
+    
+    added	void StatusBar::changeImage
+
+[33mcommit fe2f916a5daa30f71cff6a5fc3265ec11063de07[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Mon Feb 25 15:39:47 2013 -0600
+
+    Update UI/StatusBar.h
+    
+    added void changeImage(int);
+
+[33mcommit 0956682addba1fd845befa40b3068d413cb1b033[m
+Author: Peezie <Paulyboy719@gmail.com>
+Date:   Sun Feb 24 12:34:01 2013 -0800
+
+    Extended explaination of main function.
+
+[33mcommit 1b4cc87c182f1d5d4a9ade40c1eb7f6dc72c6865[m
+Author: tdogx <tamarris.jenkins@gmail.com>
+Date:   Sat Feb 23 22:17:21 2013 -1000
+
+    change test
+
+[33mcommit c870d1246adf5f6f2e93d4e78a99645dc7470158[m
+Merge: 47f9af6 d521fe5
+Author: tdogx <tamarris.jenkins@gmail.com>
+Date:   Sat Feb 23 22:13:09 2013 -1000
+
+    Merge commit 'd521fe57c77138249f55dddc599009954f2a8d6b'
+
+[33mcommit d521fe57c77138249f55dddc599009954f2a8d6b[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sun Feb 24 03:11:31 2013 -0500
+
+    testing
+
+[33mcommit 47f9af6fbb883b1b1bb3eccc54945829a7c2da64[m
+Author: tdogx <tamarris.jenkins@gmail.com>
+Date:   Sat Feb 23 22:09:41 2013 -1000
+
+    minor change
+
+[33mcommit fe0323f57758ea4ae3126761c0665e0d62ba0a8e[m
+Author: aSaul2006 <as200665@gmail.com>
+Date:   Sat Feb 23 16:19:13 2013 -0800
+
+    Saul
+    Tried to get the tinyxml set of files to link correctly
+    failed.  Added a new class to d3dutil for renderresource to communicate
+    with the resource manager.
+
+[33mcommit 7d2b8d02f6dffa3d349b635106c4ce450e90c871[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 12:17:57 2013 -0500
+
+    fixed unicode compatibility
+
+[33mcommit e1232c596ab962628e2d775081e6c53a9cdae41f[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 12:17:26 2013 -0500
+
+    restructure and converted to unicode
+
+[33mcommit 4a4f4a8df2c266b1032868880ee3830aa45827c8[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 11:27:10 2013 -0500
+
+    minor comment change
+
+[33mcommit f2b952ee01fa7fb30fd6ec5e83c2f1e42d4cc60c[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 11:26:44 2013 -0500
+
+    properly configured project file and converted to unicode
+
+[33mcommit 5b7850834d2e3de82769f01f6ee37f89903b3ce5[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 08:42:15 2013 -0500
+
+    Set script core to unicode
+    
+    Also removed the lua source files and added the includes/dll/lib
+
+[33mcommit 15864827a73c7309ba15f826f950cd20fcaa2186[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 07:17:33 2013 -0500
+
+    added project info for vs versions
+
+[33mcommit 74d34044ada5d85f9fd91bd10fbaef3c6346241e[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 07:04:54 2013 -0500
+
+    readme test
+
+[33mcommit 95f6c97475172d6b1b964069b7b7cf806b035838[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 06:55:05 2013 -0500
+
+    added files from physics branch
+    
+    fooPhysics in _misc folder
+
+[33mcommit 479ad7b726ba48ccc500a6e9fe8d1d990cd01a00[m
+Merge: ab6b236 13ceff1
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 06:41:26 2013 -0500
+
+    Merge branch 'master_'
+    
+    Conflicts:
+    	README.md
+    	_misc/SampleMainCore/app.cpp
+    	_misc/SampleMainCore/app.h
+    	_misc/SampleMainCore/fracture.cpp
+    	_misc/SampleMainCore/main.cpp
+    	_misc/SampleMainCore/random.cpp
+    	_misc/SampleMainCore/random.h
+    	_misc/SampleMainCore/timing.cpp
+    	_misc/SampleMainCore/timing.h
+
+[33mcommit 13ceff1ceefa02b3bb867272c387876bb99e3aa2[m
+Merge: 02bfcbd 9e50736
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 06:38:40 2013 -0500
+
+    Merge branch 'UserInterface' into HEAD
+    
+    Conflicts:
+    	README.md
+    	_misc/SampleMainCore/README
+    	_misc/SampleMainCore/app.cpp
+    	_misc/SampleMainCore/app.h
+    	_misc/SampleMainCore/fracture.cpp
+    	_misc/SampleMainCore/main.cpp
+    	_misc/SampleMainCore/random.cpp
+    	_misc/SampleMainCore/random.h
+    	_misc/SampleMainCore/timing.cpp
+    	_misc/SampleMainCore/timing.h
+
+[33mcommit ab6b2367919ca2b580f1a2f8d4cc9e8d464bcf00[m
+Merge: 02bfcbd 9e50736
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 06:35:08 2013 -0500
+
+    Merge branch 'UserInterface'
+    
+    Conflicts:
+    	README.md
+    	_misc/SampleMainCore/README
+    	_misc/SampleMainCore/app.cpp
+    	_misc/SampleMainCore/app.h
+    	_misc/SampleMainCore/fracture.cpp
+    	_misc/SampleMainCore/main.cpp
+    	_misc/SampleMainCore/random.cpp
+    	_misc/SampleMainCore/random.h
+    	_misc/SampleMainCore/timing.cpp
+    	_misc/SampleMainCore/timing.h
+    
+    Signed-off-by: Marc05 <m4rx05@gmail.com>
+
+[33mcommit 02bfcbdc907bdce70399294287cc4e10dc18a1c9[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 06:28:06 2013 -0500
+
+    restructure (reset)
+
+[33mcommit 9e50736f219ea1ac8d561269e4aca3a7f60eac97[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 06:07:36 2013 -0500
+
+    restructured dir and added misc files
+
+[33mcommit 5f51d40b406154f423baf97d5c40d56144a701d1[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 05:57:02 2013 -0500
+
+    merged projects into one solution
+
+[33mcommit 1e7f674db24cda6f7887224ef5146a630981463f[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 05:55:33 2013 -0500
+
+    fixed bug where it would not show slot background
+
+[33mcommit dfe0941d7a95c0d94b81f9b82814895ae2086ad6[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Sat Feb 23 03:11:18 2013 -0500
+
+    Included missing libraries in project file
+
+[33mcommit b74242075d0ce4624e03b38c669380bb1a4fed22[m
+Author: tdogx <tdogx@msn.com>
+Date:   Thu Feb 21 20:58:17 2013 -1000
+
+    using TEXT()for string arguments
+
+[33mcommit dcb1720536196abeee41049c1f4d578dda9291d6[m
+Author: tdogx <tdogx@msn.com>
+Date:   Thu Feb 21 20:51:27 2013 -1000
+
+    added wstring
+
+[33mcommit 40f0816cc6810122e72b69aa18162937a0cbba26[m
+Author: tdogx <tdogx@msn.com>
+Date:   Thu Feb 21 20:48:28 2013 -1000
+
+    added wstring
+
+[33mcommit 44b3b5183e470022537ef23d5cffda94e8d1218a[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Thu Feb 21 21:31:48 2013 -0500
+
+    Audio Core folder added, Direct X include update
+    
+    Added the audio core folder posted at the start of the core lead
+    discussion thread, seems like it's only part of the core. Will look into
+    that more. Also implemented Darrell's update to the Direct X
+    include/library link thing, it will now find the Direct X SDK anywhere
+    on the system, instead of just in program files.
+
+[33mcommit 915403952d51415d49a47830a2c388e360b55f51[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Thu Feb 21 21:17:07 2013 -0500
+
+    Revert "Second attempt, unresolved external symbols"
+    
+    This reverts commit 2bec85cd9f8148e09a7f69840e4724aa7a41d562.
+
+[33mcommit 4795db99cfc7c0b423397fd3c9688613baa2c205[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Thu Feb 21 05:17:26 2013 -0500
+
+    fixed formatting on all files
+    
+    don't use 3 space indents please (tabs preferred)
+
+[33mcommit ca3344166bf00c12600b8760287031a1faa075ca[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Thu Feb 21 05:07:46 2013 -0500
+
+    added control/menu files to project
+
+[33mcommit 80acbb70fe8a0fc77fa65e3a2092f5cf9b9e7443[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Thu Feb 21 04:56:24 2013 -0500
+
+    fixed formatting and other minor things
+    
+    some stuff has been commented out that can be added after things are merged.
+
+[33mcommit 0dee7f6729c83845e8590035cea86b8c06b483e9[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Thu Feb 21 04:39:40 2013 -0500
+
+    adding project file
+
+[33mcommit 2772ea9e31c515fe17769c79a7d37fdb5457529f[m
+Merge: 127ec29 f86984b
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Thu Feb 21 04:33:44 2013 -0500
+
+    Merge branch 'UserInterface' of https://github.com/FuzzySmurf/GSPCAGE.git into UserInterface
+
+[33mcommit 127ec29cae2a80d8546b057a5690ce4e31351efd[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Thu Feb 21 04:27:47 2013 -0500
+
+    initial files
+
+[33mcommit 6a7aad3bfb86a6f6cd0965ddc435e9d8d2bd523e[m
+Author: David Low <dlow@dlow-inc.com>
+Date:   Thu Feb 21 00:04:45 2013 -0700
+
+    Scripting Core
+    
+    Scripting Core include the lua library and an interface test fixture.
+
+[33mcommit 2bec85cd9f8148e09a7f69840e4724aa7a41d562[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Wed Feb 20 21:26:42 2013 -0500
+
+    Second attempt, unresolved external symbols
+    
+    Much cleaner attempt, trying to make a version of D3DApp's Run() method
+    that doesn't get stuck in a loop, called Render(), which does pretty
+    much the same thing but will be called every cycle of the game loop
+    instead of looping itself. Right now stuck on unresolved external
+    symbols.
+
+[33mcommit 5cd124013c574fd3768e4781eabfeac3de1c6efe[m
+Author: Jen W <zombiesally@gmail.com>
+Date:   Wed Feb 20 19:56:47 2013 -0500
+
+    Trying to use git to put the physics core code up in repo
+    
+    Signed-off-by: Jen W <zombiesally@gmail.com>
+
+[33mcommit f86984bd23e10556b837b5091ad42023e7871a1c[m
+Author: tdogx <tdogx@msn.com>
+Date:   Wed Feb 20 14:11:41 2013 -1000
+
+    Update UIInterface.h
+
+[33mcommit fdbcb202a58fc8f9ddfb663d899e11317debf223[m
+Author: tdogx <tdogx@msn.com>
+Date:   Wed Feb 20 14:08:12 2013 -1000
+
+    Update UIInterface.cpp
+
+[33mcommit c2433083d053daff7702f248925b016b70e0af1a[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Wed Feb 20 18:52:39 2013 -0500
+
+    Revert "Stuck on Bug"
+    
+    This reverts commit 6c052a179aeffd929dc0017e21cbfb1fd1a9123a.
+
+[33mcommit 5f12657fbbc19ace4cd8d84e95d4c41dff0ba405[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Wed Feb 20 16:23:59 2013 -0600
+
+    Update UIInterface.cpp
+    
+    Added functional interface for HUD
+
+[33mcommit 1a887d82e4a481c17fa96f3574d6c66017b31e32[m
+Author: tymissey <ty.missey@gmail.com>
+Date:   Wed Feb 20 16:21:14 2013 -0600
+
+    Update UIInterface.h
+    
+    Fixed HUD Interface hopefully
+
+[33mcommit f4e5631125129391c5f0b2a07a7607e66cb10e82[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Wed Feb 20 11:55:03 2013 -0500
+
+    Updated readme
+
+[33mcommit 85c124f6993c7f293be967c0caf62dada43fa6e8[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Wed Feb 20 11:51:33 2013 -0500
+
+    Removed unrelated files and updated header comment for UIInterface.h
+    
+    The MainCore is on another branch, no need for it to be here.
+
+[33mcommit 6c052a179aeffd929dc0017e21cbfb1fd1a9123a[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Wed Feb 20 08:04:51 2013 -0500
+
+    Stuck on Bug
+    
+    You may need to revert to an older version to see Rendering core in
+    working order. But you can see here where I'm trying to change how
+    rendering core works. Currently, when you do Run() in d3dUtil, it takes
+    all logic flow in order to loop. I want to make another method in there,
+    Render(), which does the exact same thing but once without looping, and
+    it's fine if we have to call it every frame. No matter what I try,
+    though, I can't get it to work, always one Direct X problem after
+    another. I think I ended up breaking how Run() originally ran, so look
+    at the old version of code for that. Anyway, I'm stuck for now, I've
+    stayed up way to late, and I'm going to bed for now. I would highly
+    appreciate if they could get rendering to render a frame without
+    stealing logic flow from main to loop forever. Multithreading maybe?
+
+[33mcommit 91c2c43fbc841eaa82d3e5778649364079c7b494[m
+Author: Marc05 <m4rx05@gmail.com>
+Date:   Wed Feb 20 07:58:22 2013 -0500
+
+    testing
+
+[33mcommit 6058d121698d23eb63768629cd437aaee8bf50f2[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Wed Feb 20 02:54:16 2013 -0500
+
+    Preparing to do stuff with rendering core
+    
+    Start of initializing the rendering core during the STARTUP game state.
+    Need to isolate the code for rendering frames, so that can be called
+    during the game-is-running state when it needs to be updated, rather
+    than letting rendering core steal logic flow.
+
+[33mcommit e46bc3174a67bbf100a203bdddbb826eb6f5fe82[m
+Author: Michael Murrell <mikestoleyobike@aim.com>
+Date:   Wed Feb 20 01:48:12 2013 -0500
+
+    rendering changes
+    
+    yep
+
+[33mcommit fe50c8ad3f10c3f1974a8c22a977d3bca5eccf56[m
+Author: tdogx <tdogx@msn.com>
+Date:   Tue Feb 19 20:38:54 2013 -1000
+
+    Update stdafx.h
+
+[33mcommit 077e771b18ef59c437a1a2ecf805bb40e396ef83[m
+Author: tdogx <tdogx@msn.com>
+Date:   Tue Feb 19 22:36:34 2013 -0800
+
+    Create Keyboard_Input.cpp
+
+[33mcommit 6a8108cfef866692b7ae153d1f513940cff59358[m
+Author: tdogx <tdogx@msn.com>
+Date:   Tue Feb 19 22:25:44 2013 -0800
+
+    Create Keyboard_Input.h
+
+[33mcommit 07ca944de2bd92b91975c0945ccb6762fc282e5b[m
+Author: tdogx <tdogx@msn.com>
+Date:   Tue Feb 19 20:20:40 2013 -1000
+
+    Update Menu.cpp
+
+[33mcommit 4788e8eef7e6ed1c59c5b9e276b31f1d121bb705[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Wed Feb 20 00:27:26 2013 -0500
+
+    Attempting to test Rendering core's main test code
+    
+    The crash happens in shaders.cpp at shader::shader() method, at the line
+    "HR(D3DXCreateEffectFromFile(g_d3dDevice, filename.c_str(),
+    0, 0, D3DXSHADER_DEBUG, 0, &m_FX, &errors));".  The revert to normal
+    code flow, comment out the Test(); line in GSP420MainCore.cpp, and
+    uncomment the other two.
+
+[33mcommit 41e124167c1d1c161f43fbedf572abf385fbd3c5[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Tue Feb 19 23:26:07 2013 -0500
+
+    Rendering Core, Direct X added
+    
+    This took a while, mostly because Direct X and setting it up with a
+    project is complicated. But the rendering core folder is added, and
+    Direct X is set up. Remember standard procedure is to delete the "ipch"
+    folders, "Debug" folders, and .sdb files. This shrinks total file size
+    tremendously without breaking anything.
+
+[33mcommit 358c151f598a81a78c45932fd91faeaa9881377d[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Tue Feb 19 22:20:07 2013 -0500
+
+    Deleted blank CoreManager
+    
+    I figured out we don't need it, since the cores have a public interface.
+    It would be redundant. Was going to commit a rendering core version, but
+    there's a newer available which I'm clearing the way for right now.
+
+[33mcommit 7e5d416600172bff02544318f2d111b5fae1b410[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Tue Feb 19 19:12:14 2013 -0500
+
+    Main Core runs on its own for now.
+    
+    I updated Main Core to run on its own since I ended up not uploading
+    some cores it relied on. Will need to uncomment some lines when we start
+    integrating the relevant cores. Next up, I'm getting what I think is a
+    recent copy of rendering core and committing that change, then I'll work
+    on integrating it. If you have a newer copy ready, feel free to
+    overwrite the version I end up uploading next.
+
+[33mcommit 47bc54431aa6f41350e2353b5884a596f9a9492a[m
+Author: Michael Murrell <mikestoleyobike@aim.com>
+Date:   Tue Feb 19 18:18:49 2013 -0500
+
+    Added Rendering Folder
+    
+    Changes I made:
+    Added in a folder that holds all the rendering core code
+    Changed project settings to include directx9
+    Changed project settings to multibyte characterset
+    commented out StateManager::InitResourceCore
+    commented out InitResourceCore from StateManager::StartUp
+    added in some includes in stdafx.h
+
+[33mcommit 28b0effaeb9403f7b5adf5e03c22cea3ea540d53[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 15:58:35 2013 -0800
+
+    Create xControl.cpp
+
+[33mcommit 69ade8a303f64d7835bd46ab272515ffc1f7a7eb[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 15:53:57 2013 -0800
+
+    Create xControl.h
+
+[33mcommit 1f60bfe2f75d180a4a1eea4e06a23bbc4a1c2e28[m
+Author: Steven Parks <zahru.tesla@hotmail.com>
+Date:   Sun Feb 17 18:52:37 2013 -0500
+
+    Main Core Pre-Integration
+    
+    Okay, let's try this with this core only. I apologize for there not
+    being a whole lot to this, but it's something.
+
+[33mcommit 8d2c102f3e205a1463f111f23b1593b35442264e[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:35:04 2013 -0800
+
+    Create UIInterface.cpp
+
+[33mcommit 3f4be4a6fcde99613556b843097bfc604b2d0aca[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:34:21 2013 -0800
+
+    Create UI.cpp
+
+[33mcommit 73d9992242cf4f42a9eabbcc27d36eddb8c36dbd[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:32:37 2013 -0800
+
+    Create TextBox.cpp
+
+[33mcommit 163ea8fcb9cdc450524f174d5a66e32ebf8e200b[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:31:53 2013 -0800
+
+    Create stdafx.cpp
+
+[33mcommit 1c222d38c3462e4a85eede367b6202e42e78ed3c[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:31:10 2013 -0800
+
+    Create StatusIcon.cpp
+
+[33mcommit dc6ac9f210a1c0e97105a13fdbaa738f2dad2fb1[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:29:07 2013 -0800
+
+    Create StatusBar.cpp
+
+[33mcommit 7857b0b4c63bb2f8d7ef0a4e2df77556bbd303e0[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:28:22 2013 -0800
+
+    Create SpriteStrip.cpp
+
+[33mcommit f770b271e5caa98fa2ccfdbdd986908d4cc32142[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:27:04 2013 -0800
+
+    Create Menu.cpp
+
+[33mcommit b87f9401e660a7547a0126f27bad036ea7fff5f2[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:25:26 2013 -0800
+
+    Create Inventory.cpp
+
+[33mcommit 1c81ed5692ad5404183ee23cb63319dba036055b[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:23:03 2013 -0800
+
+    Create Background.cpp
+
+[33mcommit 21568ed6fcec0ca42d86eba7fd6ed3bccc858edc[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:22:04 2013 -0800
+
+    Create UIInterface.h
+
+[33mcommit b61daa47bebb2b357a51cd43b08a05b3b2ddc19a[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:19:19 2013 -0800
+
+    Create TextBox.h
+
+[33mcommit 84c7e0406125de7e1b4f363f7b9fa409d3c69931[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:17:41 2013 -0800
+
+    Create stdafx.h
+
+[33mcommit 14f9518098f465c11b72e9603dddb7ac778a7001[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:16:56 2013 -0800
+
+    Create StatusIcon.h
+
+[33mcommit 13e982904b0e500e3ba0247849812e261cdb7b45[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:15:47 2013 -0800
+
+    Create StatusBar.h
+
+[33mcommit 6dd67ba29aa29cc74e675fe44d0287d971810276[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:13:31 2013 -0800
+
+    Create SpriteStrip.h
+
+[33mcommit 20393db7e531300046ca08e9ed3fcc915e44a58e[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:12:23 2013 -0800
+
+    Create Menu.h
+
+[33mcommit ba1e3d72fc752e312c48b951be3d8c4787abd090[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:11:30 2013 -0800
+
+    Create Inventory.h
+
+[33mcommit 0fd8d582aa6d22ff73127f25a3e17a835f097d4f[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:07:28 2013 -0800
+
+    Create HUDObject.h
+
+[33mcommit 3bcb4d577746541de2b46037242e3d5cbb8c8954[m
+Author: tdogx <tdogx@msn.com>
+Date:   Sun Feb 17 13:04:41 2013 -0800
+
+    Create Background.h
+
+[33mcommit 9d94de9a4705495e4168328dfa330883d37488a7[m
+Author: Daivd Low <dlow@dlow-inc.com>
+Date:   Sat Feb 16 16:01:56 2013 -0700
+
+    Move Sample Main Core to it's own directory
+
+[33mcommit 4f708824688e1ddd567464dbed8e05fe029ec0cb[m
+Author: FuzzySmurf <alexmoreno777@gmail.com>
+Date:   Sat Feb 16 14:54:23 2013 -0800
+
+    Create test
+
+[33mcommit 9cc69e8baeabc87b557a305c504cbb71d37d1e60[m
+Author: Jen W <zombiesally@gmail.com>
+Date:   Fri Feb 15 19:45:03 2013 -0500
+
+    Initial push of sample code
+    
+    Signed-off-by: Jen W <zombiesally@gmail.com>
+
+[33mcommit 88ed4dc56c32c0b286c096172020bd5a2fe38b11[m
+Author: FuzzySmurf <alexmoreno777@gmail.com>
+Date:   Wed Feb 13 19:11:42 2013 -0800
+
+    Initial commit

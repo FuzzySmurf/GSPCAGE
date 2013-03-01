@@ -1,0 +1,420 @@
+[1mdiff --git a/AICore_Files/Bounds Detection/Constants.h b/AICore_Files/Bounds Detection/Constants.h[m
+[1mdeleted file mode 100644[m
+[1mindex 50b53a4..0000000[m
+[1m--- a/AICore_Files/Bounds Detection/Constants.h[m	
+[1m+++ /dev/null[m
+[36m@@ -1,12 +0,0 @@[m
+[31m-/*****************************************************************[m
+[31m-Program Name: Constants.h[m
+[31m-Name: Zach Fetters[m
+[31m-Description: This file is used to hold various constant variables[m
+[31m-			 that will be used in multiple other files[m
+[31m-*****************************************************************/[m
+[31m-[m
+[31m-#include <math.h>[m
+[31m-#include <iomanip>[m
+[31m-[m
+[31m-const double MaxDouble = (std::numeric_limits<double>::max)();[m
+[31m-const double MinDouble = (std::numeric_limits<double>::min)();[m
+\ No newline at end of file[m
+[1mdiff --git a/AICore_Files/Steering Behaviors/2D/C2DMatrix.h b/AICore_Files/Steering Behaviors/2D/C2DMatrix.h[m
+[1mindex f96fdda..dadf41c 100644[m
+[1m--- a/AICore_Files/Steering Behaviors/2D/C2DMatrix.h[m	
+[1m+++ b/AICore_Files/Steering Behaviors/2D/C2DMatrix.h[m	
+[36m@@ -1,3 +1,5 @@[m
+[32m+[m[32m#pragma once[m[41m[m
+[32m+[m[41m[m
+ #ifndef C2DMATRIX_H[m
+ #define C2DMATRIX_H[m
+ /************************************************************************[m
+[1mdiff --git a/AICore_Files/Steering Behaviors/2D/Transformations.h b/AICore_Files/Steering Behaviors/2D/Transformations.h[m
+[1mindex 38ab2e0..d3adce5 100644[m
+[1m--- a/AICore_Files/Steering Behaviors/2D/Transformations.h[m	
+[1m+++ b/AICore_Files/Steering Behaviors/2D/Transformations.h[m	
+[36m@@ -1,3 +1,6 @@[m
+[32m+[m[41m[m
+[32m+[m[32m#pragma once[m[41m[m
+[32m+[m[41m[m
+ #ifndef TRANSFORMATIONS_H[m
+ #define TRANSFORMATIONS_H[m
+ /************************************************************************[m
+[36m@@ -13,7 +16,7 @@[m
+ [m
+ #include "Vector2D.h"[m
+ #include "C2DMatrix.h"[m
+[31m-#include "Transformations.h"[m
+[32m+[m[41m[m
+ [m
+ [m
+ [m
+[36m@@ -55,33 +58,7 @@[m [minline std::vector<Vector2D> WorldTransform(std::vector<Vector2D> &points,[m
+   return TranVector2Ds;[m
+ }[m
+ [m
+[31m-//--------------------------- WorldTransform -----------------------------[m
+[31m-//[m
+[31m-//  given a std::vector of 2D vectors, a position and  orientation[m
+[31m-//  this function transforms the 2D vectors into the object's world space[m
+[31m-//------------------------------------------------------------------------[m
+[31m-inline std::vector<Vector2D> WorldTransform(std::vector<Vector2D> &points,[m
+[31m-                                 const Vector2D   &pos,[m
+[31m-                                 const Vector2D   &forward,[m
+[31m-                                 const Vector2D   &side)[m
+[31m-{[m
+[31m-	//copy the original vertices into the buffer about to be transformed[m
+[31m-  std::vector<Vector2D> TranVector2Ds = points;[m
+[31m-  [m
+[31m-  //create a transformation matrix[m
+[31m-	C2DMatrix matTransform;[m
+[31m-[m
+[31m-	//rotate[m
+[31m-	matTransform.Rotate(forward, side);[m
+[31m-[m
+[31m-	//and translate[m
+[31m-	matTransform.Translate(pos.x, pos.y);[m
+[31m-	[m
+[31m-  //now transform the object's vertices[m
+[31m-  matTransform.TransformVector2Ds(TranVector2Ds);[m
+ [m
+[31m-  return TranVector2Ds;[m
+[31m-}[m
+ [m
+ //--------------------- PointToWorldSpace --------------------------------[m
+ //[m
+[36m@@ -200,7 +177,7 @@[m [minline void Vec2DRotateAroundOrigin(Vector2D& v, double ang)[m
+   mat.Rotate(ang);[m
+ 	[m
+   //now transform the object's vertices[m
+[31m-  mat.TransformVector2Ds(v);[m
+[32m+[m[32m  mat.TransformVector2Ds(&v);[m[41m[m
+ }[m
+ [m
+ //------------------------ CreateWhiskers ------------------------------------[m
+[36m@@ -238,4 +215,4 @@[m [minline std::vector<Vector2D> CreateWhiskers(unsigned int  NumWhiskers,[m
+ }[m
+ [m
+ [m
+[31m-#endif[m
+\ No newline at end of file[m
+[32m+[m[32m#endif[m[41m[m
+[1mdiff --git a/AICore_Files/Steering Behaviors/2D/Wall2D.h b/AICore_Files/Steering Behaviors/2D/Wall2D.h[m
+[1mindex ea7586a..60ca338 100644[m
+[1m--- a/AICore_Files/Steering Behaviors/2D/Wall2D.h[m	
+[1m+++ b/AICore_Files/Steering Behaviors/2D/Wall2D.h[m	
+[36m@@ -1,3 +1,5 @@[m
+[32m+[m[32m#pragma once[m[41m[m
+[32m+[m[41m[m
+ #ifndef WALL_H[m
+ #define WALL_H[m
+ /************************************************************************[m
+[36m@@ -10,8 +12,8 @@[m
+ *  Update:																*[m
+ *																		*[m
+ ************************************************************************/[m
+[31m-#include "misc/Cgdi.h"[m
+[31m-#include "2d/Vector2D.h"[m
+[32m+[m[32m#include "../misc/Cgdi.h"[m[41m[m
+[32m+[m[32m#include "Vector2D.h"[m[41m[m
+ #include <fstream>[m
+ [m
+ [m
+[1mdiff --git a/AICore_Files/Steering Behaviors/ParamLoader.h b/AICore_Files/Steering Behaviors/ParamLoader.h[m
+[1mindex e0fc1e6..d31eb72 100644[m
+[1m--- a/AICore_Files/Steering Behaviors/ParamLoader.h[m	
+[1m+++ b/AICore_Files/Steering Behaviors/ParamLoader.h[m	
+[36m@@ -10,7 +10,7 @@[m
+ *  Update:																*[m
+ *																		*[m
+ ************************************************************************/[m
+[31m-#include "../Bounds Detection/Constants.h"[m
+[32m+[m[41m[m
+ #include "misc/iniFileLoaderBase.h"[m
+ #include "misc/utils.h"[m
+ [m
+[1mdiff --git a/AICore_Files/Steering Behaviors/Path.cpp b/AICore_Files/Steering Behaviors/Path.cpp[m
+[1mindex 9fca373..51d91c3 100644[m
+[1m--- a/AICore_Files/Steering Behaviors/Path.cpp[m	
+[1m+++ b/AICore_Files/Steering Behaviors/Path.cpp[m	
+[36m@@ -14,12 +14,13 @@[m
+ #include "2d/transformations.h"[m
+ [m
+ //adds a waypoint to the end of the path[m
+[31m-void Path::AddWayPoint(Vector2D new_point) {[m
+[32m+[m[32mvoid Path::AddWayPoint(Vector2D new_point)[m[41m [m
+[32m+[m[32m{[m[41m[m
+       m_WayPoints.push_back(new_point);[m
+ }[m
+ [m
+ [m
+[31m-std::list<Vector2D> Path::CreateRandomPath(int   NumWaypoints,[m
+[32m+[m[32mstd::list<Vector2D> Path::CreateRandomPath(int NumWaypoints,[m[41m[m
+                                            double MinX,[m
+                                            double MinY,[m
+                                            double MaxX,[m
+[1mdiff --git a/AICore_Files/Steering Behaviors/Path.h b/AICore_Files/Steering Behaviors/Path.h[m
+[1mindex a3cba31..ec6daf9 100644[m
+[1m--- a/AICore_Files/Steering Behaviors/Path.h[m	
+[1m+++ b/AICore_Files/Steering Behaviors/Path.h[m	
+[36m@@ -63,18 +63,18 @@[m [mpublic:[m
+ [m
+   //creates a random path which is bound by rectangle described by[m
+   //the min/max values[m
+[31m-  std::list<Vector2D> CreateRandomPath(int    NumWaypoints,[m
+[31m-                                       double MinX,[m
+[31m-                                       double MinY,[m
+[31m-                                       double MaxX,[m
+[31m-                                       double MaxY);[m
+[32m+[m[32m  std::list<Vector2D> CreateRandomPath(int,[m[41m[m
+[32m+[m[32m                                       double,[m[41m[m
+[32m+[m[32m                                       double,[m[41m[m
+[32m+[m[32m                                       double,[m[41m[m
+[32m+[m[32m                                       double);[m[41m[m
+ [m
+ [m
+   void LoopOn(){m_bLooped = true;}[m
+   void LoopOff(){m_bLooped = false;}[m
+  [m
+   //adds a waypoint to the end of the path[m
+[31m-  void AddWayPoint(Vector2D new_point);[m
+[32m+[m[32m  void AddWayPoint(Vector2D);[m[41m[m
+ [m
+   //methods for setting the path with either another Path or a list of vectors[m
+   void Set(std::list<Vector2D> new_path){m_WayPoints = new_path;curWaypoint = m_WayPoints.begin();}[m
+[1mdiff --git a/AICore_Files/Steering Behaviors/misc/Cgdi.h b/AICore_Files/Steering Behaviors/misc/Cgdi.h[m
+[1mindex 493024c..cc07468 100644[m
+[1m--- a/AICore_Files/Steering Behaviors/misc/Cgdi.h[m	
+[1m+++ b/AICore_Files/Steering Behaviors/misc/Cgdi.h[m	
+[36m@@ -210,24 +210,26 @@[m [mpublic:[m
+ [m
+   //---------------------------Text[m
+ [m
+[31m-  void TextAtPos(int x, int y, (type_cast<const std::string*) &s)[m
+[32m+[m[32m  void Cgdi::TextAtPos(int x, int y, const std::wstring &s)[m[41m[m
+   {[m
+     TextOut(m_hdc, x, y, s.c_str(), (int)s.size());[m
+   }[m
+ [m
+[31m-  void TextAtPos(double x, double y, const std::string &s)[m
+[32m+[m[32m  void TextAtPos(double x, double y, const std::wstring &s)[m[41m[m
+   {[m
+[31m-    TextOut(m_hdc, (int)x, (int)y, s.c_str(), (int)s.size());[m
+[32m+[m[32m    TextOut(m_hdc, (double)x, (double)y, s.c_str(), (int)s.size());[m[41m[m
+   }[m
+ [m
+[31m-  void TextAtPos(Vector2D pos, const std::string &s)[m
+[32m+[m[32m  void TextAtPos(Vector2D pos, const std::wstring &s)[m[41m[m
+   {[m
+     TextOut(m_hdc, (int)pos.x, (int)pos.y, s.c_str(), (int)s.size());[m
+   }[m
+ [m
+   void TransparentText(){SetBkMode(m_hdc, TRANSPARENT);}[m
+[32m+[m[41m  [m
+ [m
+   void OpaqueText(){SetBkMode(m_hdc, OPAQUE);}[m
+[32m+[m[41m  [m
+ [m
+   void TextColor(int color){assert(color < NumColors); SetTextColor(m_hdc, colors[color]);}[m
+   void TextColor(int r, int g, int b){SetTextColor(m_hdc, RGB(r,g,b));}[m
+[36m@@ -244,6 +246,7 @@[m [mpublic:[m
+     SetPixel(m_hdc, x, y, color);[m
+   }[m
+   [m
+[32m+[m[32m  //(D3DXMATRIX*)&mat);[m[41m[m
+   //-------------------------Line Drawing[m
+ [m
+   void Line(Vector2D from, Vector2D to)[m
+[1mdiff --git a/Main/Main.vcxproj b/Main/Main.vcxproj[m
+[1mindex cc53c57..36545af 100644[m
+[1m--- a/Main/Main.vcxproj[m
+[1m+++ b/Main/Main.vcxproj[m
+[36m@@ -77,6 +77,30 @@[m
+     </Link>[m
+   </ItemDefinitionGroup>[m
+   <ItemGroup>[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Box2D.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\FunctionTemplates.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Geometry.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Trigger.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\TriggerRegion.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Trigger_LimitedLifetime.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Trigger_Respawning.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Vector2D.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\Entity.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\EntityGenerator.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\EntityManager.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\MessageSystem.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\State.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\StateMachine.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\Timer.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\2D\C2DMatrix.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\2D\Transformations.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\2D\Wall2D.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\misc\CellSpacePartition.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\misc\iniFileLoaderBase.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\misc\Stream_Utility_Functions.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\misc\utils.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\ParamLoader.h" />[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\Path.h" />[m[41m[m
+     <ClInclude Include="..\Audio\AudioManager.h" />[m
+     <ClInclude Include="..\Audio\cTextureResource.h" />[m
+     <ClInclude Include="..\Audio\ResourceManager.h" />[m
+[36m@@ -105,6 +129,16 @@[m
+     <ClInclude Include="WorldObject.h" />[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\Entity.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\EntityGenerator.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\EntityManager.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\Main.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\MessageSystem.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\State.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\Timer.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\Steering Behaviors\misc\iniFileLoaderBase.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\Steering Behaviors\ParamLoader.cpp" />[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\Steering Behaviors\Path.cpp" />[m[41m[m
+     <ClCompile Include="..\Audio\AudioManager.cpp" />[m
+     <ClCompile Include="..\Audio\cTextureResource.cpp" />[m
+     <ClCompile Include="..\Audio\ResourceManager.cpp" />[m
+[1mdiff --git a/Main/Main.vcxproj.filters b/Main/Main.vcxproj.filters[m
+[1mindex 59efa13..a859d8a 100644[m
+[1m--- a/Main/Main.vcxproj.filters[m
+[1m+++ b/Main/Main.vcxproj.filters[m
+[36m@@ -144,6 +144,78 @@[m
+     <ClInclude Include="..\Audio\cTextureResource.h">[m
+       <Filter>Header Files\ResourceManager</Filter>[m
+     </ClInclude>[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Box2D.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Bounds Detection</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\FunctionTemplates.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Bounds Detection</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Geometry.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Bounds Detection</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Trigger.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Bounds Detection</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Trigger_LimitedLifetime.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Bounds Detection</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Trigger_Respawning.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Bounds Detection</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\TriggerRegion.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Bounds Detection</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Bounds Detection\Vector2D.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Bounds Detection</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\Entity.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\EntityGenerator.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\EntityManager.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\MessageSystem.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\State.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\StateMachine.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\State, Message, and Entity Systems\Timer.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\ParamLoader.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\Path.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\2D\C2DMatrix.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors\2D</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\2D\Transformations.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors\2D</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\2D\Wall2D.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors\2D</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\misc\CellSpacePartition.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors\misc</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\misc\iniFileLoaderBase.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors\misc</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\misc\Stream_Utility_Functions.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors\misc</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+[32m+[m[32m    <ClInclude Include="..\AICore_Files\Steering Behaviors\misc\utils.h">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors\misc</Filter>[m[41m[m
+[32m+[m[32m    </ClInclude>[m[41m[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <ClCompile Include="GSP420MainCore.cpp">[m
+[36m@@ -224,6 +296,36 @@[m
+     <ClCompile Include="..\Audio\Sound.cpp">[m
+       <Filter>Source Files\ResourceManager</Filter>[m
+     </ClCompile>[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\Entity.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems\Source</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\EntityGenerator.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems\Source</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\EntityManager.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems\Source</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\Main.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems\Source</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\MessageSystem.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems\Source</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\State.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems\Source</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\State, Message, and Entity Systems\Timer.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\State, Message, and Entity Systems\Source</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\Steering Behaviors\ParamLoader.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\Steering Behaviors\Path.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+[32m+[m[32m    <ClCompile Include="..\AICore_Files\Steering Behaviors\misc\iniFileLoaderBase.cpp">[m[41m[m
+[32m+[m[32m      <Filter>Header Files\Main\AI\Steering Behaviors\misc</Filter>[m[41m[m
+[32m+[m[32m    </ClCompile>[m[41m[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <FxCompile Include="..\Render\fx\lighting.fx">[m
+[1mdiff --git a/UI/UI.cpp b/UI/UI.cpp[m
+[1mindex b50057f..b68f1ab 100644[m
+[1m--- a/UI/UI.cpp[m
+[1m+++ b/UI/UI.cpp[m
+[36m@@ -88,12 +88,18 @@[m [mint APIENTRY _tWinMain(_In_ HINSTANCE hInstance,[m
+ 	playerStaminaBar.modifyValue(playerStamina, barSprites);[m
+ 	*/[m
+ 	[m
+[32m+[m	[32mint crSlide = 0;[m
+ 	//credits[m
+ [m
+ 	bool showCredits = true;[m
+ 	int li = 0;[m
+[32m+[m[32m<<<<<<< HEAD[m
+ 	int crSlide = 0;[m
+ 	StatusIcon credits(L"credits", SCREEN_WIDTH/4, SCREEN_HEIGHT/4, crSlide, CreditSprites);[m
+[32m+[m[32m=======[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[32m>>>>>>> Have AI included down to 1 error[m
+ 	//END HUD SAMPLE[m
+ [m
+ 	// Main message loop:[m

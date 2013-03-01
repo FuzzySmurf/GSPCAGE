@@ -1,0 +1,27 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# Not currently on any branch.
+# You are currently rebasing.
+#   (all conflicts fixed: run "git rebase --continue")
+#
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	deleted:    AICore_Files/Bounds Detection/Constants.h
+#	modified:   AICore_Files/Steering Behaviors/2D/C2DMatrix.h
+#	modified:   AICore_Files/Steering Behaviors/2D/Transformations.h
+#	modified:   AICore_Files/Steering Behaviors/2D/Wall2D.h
+#	modified:   AICore_Files/Steering Behaviors/ParamLoader.h
+#	modified:   AICore_Files/Steering Behaviors/Path.cpp
+#	modified:   AICore_Files/Steering Behaviors/Path.h
+#	modified:   AICore_Files/Steering Behaviors/misc/Cgdi.h
+#	modified:   Main/Main.vcxproj
+#	modified:   Main/Main.vcxproj.filters
+#	modified:   UI/UI.cpp
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	top
+
