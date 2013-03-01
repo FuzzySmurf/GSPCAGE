@@ -1,3 +1,11 @@
+/************************************************************************
+*  Program Name:         Texture Resource Class                                               
+*  Name:                 Juan Ramirez                                                                                        
+*  Date:                 January 25, 2013  
+*  Description:          Loads texture variables                                                                                                                                                                   *
+*  Update:                                            
+*                                                     
+************************************************************************/
 #include "cTextureResource.h"
 
 cTextureResource::~cTextureResource(void)

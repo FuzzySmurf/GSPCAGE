@@ -1,3 +1,13 @@
+/************************************************************************
+*  Program Name:		AudioManager.cpp  								*
+*  Name:				          										*
+*  Date:				January 25, 2013								*
+*  Description:			Code file for Sound class						*
+*						Plays sound                             		*
+*						Singleton design								*
+*  Update:																*
+*																		*
+************************************************************************/
 #include "AudioManager.h"
 #include "cTextureResource.h"
 

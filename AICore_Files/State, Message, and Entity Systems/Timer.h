@@ -39,5 +39,5 @@ public:
 	static Timer* Instance();
 
 	// GetCurrentTime function: returns the amount of time that has elapsed since the timer started
-	double GetCurrentTime();
+	float GetCurrentTime();
 };

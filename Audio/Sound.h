@@ -1,3 +1,13 @@
+/************************************************************************
+*  Program Name:		Sound.h  										*
+*  Name:				          										*
+*  Date:				January 25, 2013								*
+*  Description:			Code file for Sound class						*
+*						Plays sound                             		*
+*						                								*
+*  Update:																*
+*																		*
+************************************************************************/
 #pragma once
 #include "fmod\include\fmod.hpp"
 #include <windows.h>

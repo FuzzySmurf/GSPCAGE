@@ -210,17 +210,17 @@ public:
 
   //---------------------------Text
 
-  void TextAtPos(int x, int y, (type_cast<const std::string*) &s)
+  void Cgdi::TextAtPos(int x, int y, const std::wstring &s)
   {
     TextOut(m_hdc, x, y, s.c_str(), (int)s.size());
   }
 
-  void TextAtPos(double x, double y, const std::string &s)
+  void Cgdi::TextAtPos(double x, double y, const std::wstring &s)
   {
     TextOut(m_hdc, (int)x, (int)y, s.c_str(), (int)s.size());
   }
 
-  void TextAtPos(Vector2D pos, const std::string &s)
+  void Cgdi::TextAtPos(Vector2D pos, const std::wstring &s)
   {
     TextOut(m_hdc, (int)pos.x, (int)pos.y, s.c_str(), (int)s.size());
   }

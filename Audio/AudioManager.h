@@ -1,3 +1,13 @@
+/************************************************************************
+*  Program Name:		AudioManager.h  								*
+*  Name:				          										*
+*  Date:				January 25, 2013								*
+*  Description:			Code file for Sound class						*
+*						Plays sound                             		*
+*						Singleton design								*
+*  Update:																*
+*																		*
+************************************************************************/
 #pragma once
 
 #ifndef H_AUDIOMANAGER

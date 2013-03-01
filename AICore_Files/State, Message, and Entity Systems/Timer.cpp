@@ -38,7 +38,7 @@ Timer* Timer::Instance()
 }
 
 // GetCurrentTime function: returns the amount of time that has elapsed since the timer started
-double Timer::GetCurrentTime()
+float Timer::GetCurrentTime()
 {
 	return timeGetTime() * 0.001 - m_fStartTime;
 }

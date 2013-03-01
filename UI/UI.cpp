@@ -56,8 +56,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	InventorySetup(); // INVENTORY_EXAMPLE - build the inventory
 	//HUD SAMPLE
 	//main declarations
-	SpriteStrip barSprites(L"_\misc\barca_assets\bar.png", 4);
-	SpriteStrip barSprites(L"_\misc\barca_assets\credits.png", 8);
+	SpriteStrip barSprites(L"_/misc/barca_assets/bar.png", 4);
+	SpriteStrip CreditSprites(L"_/misc/barca_assets/credits.png", 8);
 
 	//healthbar
 	float playerHealth = 100.0;

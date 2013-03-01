@@ -1,3 +1,13 @@
+/************************************************************************
+*  Program Name:		ResourceManager.h   							*
+*  Name:				          										*
+*  Date:				January 25, 2013								*
+*  Description:			Code file for ResourceManager class				*
+*						                                        		*
+*						Singleton design								*
+*  Update:																*
+*																		*
+************************************************************************/
 #pragma once
 
 #ifndef RESOURCEMANAGER_H_INCLUDED
