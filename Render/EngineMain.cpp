@@ -25,8 +25,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 	EngineMain app(hInstance, L"GSP420 Engine", D3DDEVTYPE_HAL, D3DCREATE_HARDWARE_VERTEXPROCESSING);
 	g_d3dApp = &app;
 
-	DirectInput di(DISCL_NONEXCLUSIVE|DISCL_FOREGROUND, DISCL_NONEXCLUSIVE|DISCL_FOREGROUND);
-	gDInput = &di;
+	//DirectInput di(DISCL_NONEXCLUSIVE|DISCL_FOREGROUND, DISCL_NONEXCLUSIVE|DISCL_FOREGROUND);
+	//gDInput = &di;
 
     return g_d3dApp->run();
 }
@@ -172,6 +172,8 @@ void EngineMain::drawScene()
 	Shaders::BasicFX->m_FX->SetTechnique(Shaders::BasicFX->m_hTech);
 	// Begin passes.
 	UINT numPasses = 0;
+
+
 	Shaders::BasicFX->m_FX->Begin(&numPasses, 0);
 	Shaders::BasicFX->m_FX->BeginPass(0);
 	skull->DrawModel(wVPM);
@@ -219,4 +221,3 @@ void EngineMain::buildProjMtx()
 	camera.SetAspectRatio(w/h);
 	D3DXMatrixPerspectiveFovLH(&camera.GetProjection(), camera.GetFOV(), camera.GetAspectRatio(), camera.GetNearValue(), camera.GetFarValue());
 }
-

@@ -70,8 +70,8 @@ VertexBlend* Shaders::VBlendFX = 0;
 
 void Shaders::InitAll()
 {
-	BasicFX  = new Basic(L"FX\\lighting.fx");
-	VBlendFX = new VertexBlend(L"FX\\vblend2.fx");
+	BasicFX  = new Basic(L"../Render/fx/lighting.fx");
+	VBlendFX = new VertexBlend(L"../Render/fx/vblend2.fx");
 }
 
 void Shaders::DestroyAll()

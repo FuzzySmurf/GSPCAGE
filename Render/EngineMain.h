@@ -44,6 +44,8 @@ public:
 private:
 	GfxStats* m_GfxStats;
 
+
+
 	// // // Models // // //
 	Model*			skull;
 	Model*			dwarf;

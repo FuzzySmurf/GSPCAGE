@@ -82,109 +82,131 @@ void GenTriGrid(int numVertRows, int numVertCols,
 	}
 }
 
-void LoadXFile(
-	const std::wstring& filename, 
-	ID3DXMesh** meshOut,
-	std::vector<Mtrl>& mtrls, 
-	std::vector<IDirect3DTexture9*>& texs)
+ static std::string utf16ToUTF8( const std::wstring &s )
 {
-	// Step 1: Load the .x file from file into a system memory mesh.
-	std::wstring fileStart = L"Models\\";
-	ID3DXMesh* meshSys      = 0;
-	ID3DXBuffer* adjBuffer  = 0;
-	ID3DXBuffer* mtrlBuffer = 0;
-	DWORD numMtrls          = 0;
+    const int size = ::WideCharToMultiByte( CP_UTF8, 0, s.c_str(), -1, NULL, 0, 0, NULL );
 
-	HR(D3DXLoadMeshFromX(filename.c_str(), D3DXMESH_SYSTEMMEM, g_d3dDevice,
-		&adjBuffer,	&mtrlBuffer, 0, &numMtrls, &meshSys));
+    std::vector<char> buf( size );
+    ::WideCharToMultiByte( CP_UTF8, 0, s.c_str(), -1, &buf[0], size, 0, NULL );
 
+    return std::string( &buf[0] );
+}
 
-	// Step 2: Find out if the mesh already has normal info?
+static std::wstring utf8ToUTF16( const std::string &ws )
+{
+ const int size = ::MultiByteToWideChar( CP_UTF8, 0, ws.c_str(), -1, NULL, 0);
 
-	D3DVERTEXELEMENT9 elems[MAX_FVF_DECL_SIZE];
-	HR(meshSys->GetDeclaration(elems));
-	
-	bool hasNormals = false;
-	D3DVERTEXELEMENT9 term = D3DDECL_END();
-	for(int i = 0; i < MAX_FVF_DECL_SIZE; ++i)
-	{
-		// Did we reach D3DDECL_END() {0xFF,0,D3DDECLTYPE_UNUSED, 0,0,0}?
-		if(elems[i].Stream == 0xff )
-			break;
+    std::vector<wchar_t> buf( size );
+    ::MultiByteToWideChar( CP_UTF8, 0, ws.c_str(), -1, &buf[0], size);
 
-		if( elems[i].Type == D3DDECLTYPE_FLOAT3 &&
-			elems[i].Usage == D3DDECLUSAGE_NORMAL &&
-			elems[i].UsageIndex == 0 )
-		{
-			hasNormals = true;
-			break;
-		}
-	}
+    return std::wstring( &buf[0] );
+}
 
+void LoadXFile(
+ const std::wstring& filename, 
+ ID3DXMesh** meshOut,
+ std::vector<Mtrl>& mtrls, 
+ std::vector<IDirect3DTexture9*>& texs)
+{
+ // Step 1: Load the .x file from file into a system memory mesh
+ std::wstring fileEnd = filename.c_str();
+ std::wstring finalFileName = L"../Render/models/" + fileEnd;
+ ID3DXMesh* meshSys      = 0;
+ ID3DXBuffer* adjBuffer  = 0;
+ ID3DXBuffer* mtrlBuffer = 0;
+ DWORD numMtrls          = 0;
 
-	// Step 3: Change vertex format to VertexPNT.
-
-	D3DVERTEXELEMENT9 elements[64];
-	UINT numElements = 0;
-	VertexPNT::Decl->GetDeclaration(elements, &numElements);
-
-	ID3DXMesh* temp = 0;
-	HR(meshSys->CloneMesh(D3DXMESH_SYSTEMMEM, 
-		elements, g_d3dDevice, &temp));
-	ReleaseCOM(meshSys);
-	meshSys = temp;
+ HR(D3DXLoadMeshFromX(finalFileName.c_str(), D3DXMESH_SYSTEMMEM, g_d3dDevice,
+  &adjBuffer, &mtrlBuffer, 0, &numMtrls, &meshSys));
 
 
-	// Step 4: If the mesh did not have normals, generate them.
+ // Step 2: Find out if the mesh already has normal info?
 
-	if( hasNormals == false)
-		HR(D3DXComputeNormals(meshSys, 0));
+ D3DVERTEXELEMENT9 elems[MAX_FVF_DECL_SIZE];
+ HR(meshSys->GetDeclaration(elems));
+ 
+ bool hasNormals = false;
+ D3DVERTEXELEMENT9 term = D3DDECL_END();
+ for(int i = 0; i < MAX_FVF_DECL_SIZE; ++i)
+ {
+  // Did we reach D3DDECL_END() {0xFF,0,D3DDECLTYPE_UNUSED, 0,0,0}?
+  if(elems[i].Stream == 0xff )
+   break;
+
+  if( elems[i].Type == D3DDECLTYPE_FLOAT3 &&
+   elems[i].Usage == D3DDECLUSAGE_NORMAL &&
+   elems[i].UsageIndex == 0 )
+  {
+   hasNormals = true;
+   break;
+  }
+ }
 
 
-	// Step 5: Optimize the mesh.
+ // Step 3: Change vertex format to VertexPNT.
 
-	HR(meshSys->Optimize(D3DXMESH_MANAGED | 
-		D3DXMESHOPT_COMPACT | D3DXMESHOPT_ATTRSORT | D3DXMESHOPT_VERTEXCACHE, 
-		(DWORD*)adjBuffer->GetBufferPointer(), 0, 0, 0, meshOut));
-	ReleaseCOM(meshSys); // Done w/ system mesh.
-	ReleaseCOM(adjBuffer); // Done with buffer.
+ D3DVERTEXELEMENT9 elements[64];
+ UINT numElements = 0;
+ VertexPNT::Decl->GetDeclaration(elements, &numElements);
 
-	// Step 6: Extract the materials and load the textures.
+ ID3DXMesh* temp = 0;
+ HR(meshSys->CloneMesh(D3DXMESH_SYSTEMMEM, 
+  elements, g_d3dDevice, &temp));
+ ReleaseCOM(meshSys);
+ meshSys = temp;
 
-	if( mtrlBuffer != 0 && numMtrls != 0 )
-	{
-		D3DXMATERIAL* d3dxmtrls = (D3DXMATERIAL*)mtrlBuffer->GetBufferPointer();
-		for(DWORD i = 0; i < numMtrls; ++i)
-		{
-			// Save the ith material.  Note that the MatD3D property does not have an ambient
-			// value set when its loaded, so just set it to the diffuse value.
-			Mtrl m;
-			m.ambient   = d3dxmtrls[i].MatD3D.Diffuse;
-			m.diffuse   = d3dxmtrls[i].MatD3D.Diffuse;
-			m.spec      = d3dxmtrls[i].MatD3D.Specular;
-			m.specPower = d3dxmtrls[i].MatD3D.Power;
-			mtrls.push_back( m );
 
-			d3dxmtrls[i].pTextureFilename = d3dxmtrls[i].pTextureFilename;
-			// Check if the ith material has an associative texture
-			if( d3dxmtrls[i].pTextureFilename != 0 )
-			{
-				// Yes, load the texture for the ith subset
-				IDirect3DTexture9* tex = 0;
-				wchar_t* texFN = (TCHAR*)d3dxmtrls[i].pTextureFilename;
-				HR(D3DXCreateTextureFromFile(g_d3dDevice, texFN, &tex));
+ // Step 4: If the mesh did not have normals, generate them.
 
-				// Save the loaded texture
-				texs.push_back( tex );
-			}
-			else
-			{
-				// No texture for the ith subset
-				texs.push_back( 0 );
-			}
-		}
-	}
-	ReleaseCOM(mtrlBuffer); // done w/ buffer
+ if( hasNormals == false)
+  HR(D3DXComputeNormals(meshSys, 0));
+
+
+ // Step 5: Optimize the mesh.
+
+ HR(meshSys->Optimize(D3DXMESH_MANAGED | 
+  D3DXMESHOPT_COMPACT | D3DXMESHOPT_ATTRSORT | D3DXMESHOPT_VERTEXCACHE, 
+  (DWORD*)adjBuffer->GetBufferPointer(), 0, 0, 0, meshOut));
+ ReleaseCOM(meshSys); // Done w/ system mesh.
+ ReleaseCOM(adjBuffer); // Done with buffer.
+
+ // Step 6: Extract the materials and load the textures.
+
+ if( mtrlBuffer != 0 && numMtrls != 0 )
+ {
+  D3DXMATERIAL* d3dxmtrls = (D3DXMATERIAL*)mtrlBuffer->GetBufferPointer();
+  for(DWORD i = 0; i < numMtrls; ++i)
+  {
+   // Save the ith material.  Note that the MatD3D property does not have an ambient
+   // value set when its loaded, so just set it to the diffuse value.
+   Mtrl m;
+   m.ambient   = d3dxmtrls[i].MatD3D.Diffuse;
+   m.diffuse   = d3dxmtrls[i].MatD3D.Diffuse;
+   m.spec      = d3dxmtrls[i].MatD3D.Specular;
+   m.specPower = d3dxmtrls[i].MatD3D.Power;
+   mtrls.push_back( m );
+
+   d3dxmtrls[i].pTextureFilename = d3dxmtrls[i].pTextureFilename;
+   // Check if the ith material has an associative texture
+   if( d3dxmtrls[i].pTextureFilename != 0 )
+   {
+    // Yes, load the texture for the ith subset
+    IDirect3DTexture9* tex = 0;
+    std::wstring TextureFileName = utf8ToUTF16(std::string("../Render/models/")) + utf8ToUTF16(d3dxmtrls[i].pTextureFilename);
+    //wchar_t* texFN = (wchar_t*)d3dxmtrls[i].pTextureFilename;
+    HR(D3DXCreateTextureFromFile(g_d3dDevice, TextureFileName.c_str(), &tex));
+
+    // Save the loaded texture
+    texs.push_back( tex );
+   }
+   else
+   {
+    // No texture for the ith subset
+    texs.push_back( 0 );
+   }
+  }
+ }
+ ReleaseCOM(mtrlBuffer); // done w/ buffer
 }
 
 
