@@ -15,22 +15,23 @@
 cResourceManager* resMan = new cResourceManager();
 static std::wstring utf8ToUTF16( const std::string &ws );
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
-				   PSTR cmdLine, int showCmd)
-{
-	// Enable run-time memory check for debug builds.
-	#if defined(DEBUG) | defined(_DEBUG)
-		_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
-	#endif
-
-	EngineMain app(hInstance, L"GSP420 Engine", D3DDEVTYPE_HAL, D3DCREATE_HARDWARE_VERTEXPROCESSING);
-	g_d3dApp = &app;
-
-	//DirectInput di(DISCL_NONEXCLUSIVE|DISCL_FOREGROUND, DISCL_NONEXCLUSIVE|DISCL_FOREGROUND);
-	//gDInput = &di;
-
-    return g_d3dApp->run();
-}
+//Execution now begins in main core
+//int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
+//				   PSTR cmdLine, int showCmd)
+//{
+//	// Enable run-time memory check for debug builds.
+//	#if defined(DEBUG) | defined(_DEBUG)
+//		_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+//	#endif
+//
+//	EngineMain app(hInstance, L"GSP420 Engine", D3DDEVTYPE_HAL, D3DCREATE_HARDWARE_VERTEXPROCESSING);
+//	g_d3dApp = &app;
+//
+//	//DirectInput di(DISCL_NONEXCLUSIVE|DISCL_FOREGROUND, DISCL_NONEXCLUSIVE|DISCL_FOREGROUND);
+//	//gDInput = &di;
+//
+//    return g_d3dApp->run();
+//}
 
 EngineMain::EngineMain(HINSTANCE hInstance, std::wstring winCaption, D3DDEVTYPE devType, DWORD requestedVP)
 : D3DApp(hInstance, winCaption, devType, requestedVP)

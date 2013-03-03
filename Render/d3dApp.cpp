@@ -201,6 +201,51 @@ int D3DApp::run()
 	return (int)msg.wParam;
 }
 
+void D3DApp::render()
+{
+	// If there are Window messages then process them.
+	if(PeekMessage( &msg, 0, 0, 0, PM_REMOVE ))
+	{
+        TranslateMessage( &msg );
+        DispatchMessage( &msg );
+	}
+	// Otherwise, do animation/game stuff.
+	else
+    {	
+		// If the application is paused then free some CPU cycles to other 
+		// applications and then continue on to the next frame.
+		if( m_bAppPaused )
+		{
+			Sleep(20);
+			return;
+		}
+
+		if( !isDeviceLost() )
+		{
+			__int64 currTimeStamp = 0;
+			QueryPerformanceCounter((LARGE_INTEGER*)&currTimeStamp);
+			float dt = (currTimeStamp - prevTimeStamp)*secsPerCnt;
+
+			updateScene(dt);
+			drawScene();
+
+			// Prepare for next iteration: The current time stamp becomes
+			// the previous time stamp for the next iteration.
+			prevTimeStamp = currTimeStamp;
+		}
+    }
+}
+
+void D3DApp::initRender()
+{
+	msg.message = WM_NULL;
+	cntsPerSec = 0;
+	secsPerCnt = 1.0f / (float)cntsPerSec;
+	prevTimeStamp = 0;
+	QueryPerformanceFrequency((LARGE_INTEGER*)&cntsPerSec);
+	QueryPerformanceCounter((LARGE_INTEGER*)&prevTimeStamp);
+}
+
 LRESULT D3DApp::msgProc(UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	// Is the application in a minimized or maximized state?

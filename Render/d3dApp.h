@@ -25,6 +25,12 @@ public:
 	HINSTANCE getAppInst();
 	HWND      getMainWnd();
 
+	//Render init variables
+	MSG  msg;
+	__int64 cntsPerSec;
+	float secsPerCnt;
+	__int64 prevTimeStamp;
+
 	// Framework methods.  Derived client class overrides these methods to 
 	// implement specific application requirements.
 	virtual bool checkDeviceCaps()     { return true; }
@@ -39,6 +45,8 @@ public:
 	virtual void initMainWindow();
 	virtual void initDirect3D();
 	virtual int run();
+	virtual void render();
+	virtual void initRender();
 	virtual LRESULT msgProc(UINT msg, WPARAM wParam, LPARAM lParam);
 
 	void enableFullScreenMode(bool enable);

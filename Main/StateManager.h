@@ -18,6 +18,8 @@ class StateManager
 	void InitRenderingCore(HINSTANCE);
 
 public:
+
+
 	StateManager(void); //Default Constructor
 	StateManager(HINSTANCE); // Constructor
 	void Run();

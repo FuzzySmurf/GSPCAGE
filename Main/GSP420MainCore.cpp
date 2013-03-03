@@ -16,8 +16,8 @@ void Test()
 {
 }
 
-int _tmain(HINSTANCE hInstance, HINSTANCE prevInstance,
-				   PSTR cmdLine, int showCmd) //Entry point of application //int argc, _TCHAR* argv[]
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
+				   PSTR cmdLine, int showCmd)
 {
 	//Test(hInstance, prevInstance, cmdLine, showCmd);
 	//resMan->loadFromXMLFile("Resources.xml");
