@@ -37,6 +37,7 @@ public:
 
 	// Helper methods
 	void buildFX();
+	void buildGridGeometry();
 	void buildViewMtx();
 	void buildProjMtx();
 	void drawMeshes();
@@ -57,6 +58,42 @@ private:
 	Camera camera;
 
 	D3DXMATRIX m_World;
+
+
+#pragma region Grid
+	DWORD mNumGridVertices;
+	DWORD mNumGridTriangles;
+	
+	IDirect3DVertexBuffer9* mGridVB;
+	IDirect3DIndexBuffer9*  mGridIB;
+	IDirect3DTexture9*     mGroundTex;
+
+	ID3DXEffect* mFX;
+	D3DXHANDLE   mhTech;
+	D3DXHANDLE   mhWVP;
+	D3DXHANDLE   mhWorldInvTrans;
+	D3DXHANDLE   mhLightVecW;
+	D3DXHANDLE   mhDiffuseMtrl;
+	D3DXHANDLE   mhDiffuseLight;
+	D3DXHANDLE   mhAmbientMtrl;
+	D3DXHANDLE   mhAmbientLight;
+	D3DXHANDLE   mhSpecularMtrl;
+	D3DXHANDLE   mhSpecularLight;
+	D3DXHANDLE   mhSpecularPower;
+	D3DXHANDLE   mhEyePos;
+	D3DXHANDLE   mhWorld;
+	D3DXHANDLE   mhTex;
+
+	D3DXVECTOR3 mLightVecW;
+	D3DXCOLOR   mAmbientMtrl;
+	D3DXCOLOR   mAmbientLight;
+	D3DXCOLOR   mDiffuseMtrl;
+	D3DXCOLOR   mDiffuseLight;
+	D3DXCOLOR   mSpecularMtrl;
+	D3DXCOLOR   mSpecularLight;
+	float       mSpecularPower;
+
+#pragma endregion 
 
 };
 
