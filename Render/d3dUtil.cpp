@@ -7,7 +7,7 @@
 #define SAFE_DELETE(a) { delete (a); (a) = NULL; }
 
 void GenTriGrid(int numVertRows, int numVertCols,
-				float dx, float dz, 
+				float dx, float dy, 
 				const D3DXVECTOR3& center, 
 				std::vector<D3DXVECTOR3>& verts,
 				std::vector<DWORD>& indices)
@@ -19,7 +19,7 @@ void GenTriGrid(int numVertRows, int numVertCols,
 	int numTris = numCellRows*numCellCols*2;
 
 	float width = (float)numCellCols * dx;
-	float depth = (float)numCellRows * dz;
+	float height = (float)numCellRows * dy;
 
 	//===========================================
 	// Build vertices.
@@ -34,7 +34,7 @@ void GenTriGrid(int numVertRows, int numVertCols,
 	// Offsets to translate grid from quadrant 4 to center of 
 	// coordinate system.
 	float xOffset = -width * 0.5f; 
-	float zOffset =  depth * 0.5f;
+	float yOffset = height * 0.5f;
 
 	int k = 0;
 	for(float i = 0; i < numVertRows; ++i)
@@ -44,8 +44,8 @@ void GenTriGrid(int numVertRows, int numVertCols,
 			// Negate the depth coordinate to put in quadrant four.  
 			// Then offset to center about coordinate system.
 			verts[k].x =  j * dx + xOffset;
-			verts[k].z = -i * dz + zOffset;
-			verts[k].y =  0.0f;
+			verts[k].y = -i * dy + yOffset;
+			verts[k].z =  0.0f;
 
 			// Translate so that the center of the grid is at the
 			// specified 'center' parameter.
