@@ -18,9 +18,9 @@
 	<!-----------------------------------------Graphics/Meshes -------------------------------->
 	<!---------------------------------------------------------------------------------------->
 	<! -- 3D Assets begin with 2 followed by next number for example first 3D asset 200 -->
-	<resource UID="200" type ="graphic" filename ="_misc\barca_assets\ball.x" scenescope = "1"></resource>
-	<resource UID="201" type ="" filename ="_misc\barca_assets" scenescope = ""></resource>
-	
+	<resource UID="200" type ="graphic" filename ="_misc\barca_assets\ball.X" scenescope = "1"></resource>
+	<resource UID="201" type ="graphic" filename ="_misc\barca_assets\Dummy.X" scenescope = "1"></resource>
+	<resource UID="202" type ="graphic" filename ="_misc\barca_assets\Butch.X" scenescope = "1"></resource>
 	
 	<!---------------------------------------------------------------------------------------->
 	<!-----------------------------------------TEXTURE/IMAGES -------------------------------->
